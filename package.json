@@ -1,0 +1,25 @@
+{
+  "name": "venus-ui",
+  "version": "1.0.0",
+  "description": "ui lib",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/Jecen/venus-ui.git"
+  },
+  "keywords": [
+    "venus-ui"
+  ],
+  "author": "Jacen",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Jecen/venus-ui/issues"
+  },
+  "homepage": "https://github.com/Jecen/venus-ui#readme",
+  "dependencies": {
+    "@polymer/lit-element": "^0.5.1"
+  }
+}
