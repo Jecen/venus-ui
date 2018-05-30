@@ -4,7 +4,8 @@
   "description": "ui lib",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "test": "test",
+    "build": "webpack --config ./build/webpack.config.js"
   },
   "repository": {
     "type": "git",
@@ -21,5 +22,9 @@
   "homepage": "https://github.com/Jecen/venus-ui#readme",
   "dependencies": {
     "@polymer/lit-element": "^0.5.1"
+  },
+  "devDependencies": {
+    "webpack": "^4.10.1",
+    "webpack-cli": "^2.1.4"
   }
 }
