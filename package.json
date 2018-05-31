@@ -1,8 +1,8 @@
 {
   "name": "venus-ui",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "ui lib",
-  "main": "index.js",
+  "main": "./dist/venus-ui.js",
   "scripts": {
     "test": "test",
     "build": "webpack --config ./build/webpack.config.js"
