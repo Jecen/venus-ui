@@ -16,7 +16,6 @@ const webComponentsSupported = (
     'import' in document.createElement('link') &&
     'content' in document.createElement('template')
 );
-console.log(webComponentsSupported, '-=-=-=')
 if (!webComponentsSupported) {
     const script = document.createElement('script');
     script.async = true;

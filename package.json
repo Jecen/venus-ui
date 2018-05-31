@@ -1,6 +1,6 @@
 {
   "name": "venus-ui",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "ui lib",
   "main": "./dist/venus-ui.js",
   "scripts": {
@@ -21,7 +21,8 @@
   },
   "homepage": "https://github.com/Jecen/venus-ui#readme",
   "dependencies": {
-    "@polymer/lit-element": "^0.5.1"
+    "@polymer/lit-element": "^0.5.1",
+    "babel-loader": "^7.1.4"
   },
   "devDependencies": {
     "webpack": "^4.10.1",
