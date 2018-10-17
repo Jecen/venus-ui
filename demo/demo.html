@@ -11,12 +11,37 @@
       font-size: 16px;
       line-height: 2;
     }
+    .wrapper{
+      position: relative;
+      width: 400px;
+      height: 300px;
+      display: block;
+      background-color: #fff;
+      border-radius: 5px;
+      border: 1px solid #123123;
+      overflow: hidden;
+    }
+    @keyframes moveTheWave {
+      0% { transform: translate3d(0, 0, 0);}
+      100% { transform: translate3d(-400%, 0, 0); }
+    }
+    .animation {
+      animation: moveTheWave var(--d) linear infinite;  
+    }
+  
   </style>
+  <script type="module" src="../dist/venus-ui.js"></script>
+  <script type="module" src="../src/waves.js"></script>
 </head>
 
 <body>
-  <script type="module" src="../dist/venus-ui.js"></script>
+  <div class=wrapper></div>
   <lcd-number value="19" color="#557722" size="140"></lcd-number>
+  <script>
+    window.onload = function() {
+      waves(document.querySelector('.wrapper'))
+    }
+  </script>
 </body>
 
 </html>
