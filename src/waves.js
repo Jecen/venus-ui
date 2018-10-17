@@ -14,22 +14,25 @@ function createSvg(tag, attr) {
    return el
 }
 
+
 const waves = (el, option = {height: 60, num: 4}) => {
+    let head = document.getElementsByTagName('head')
+    let style = document.createElement('style')
+    style.innerText = `@keyframes moveTheWave { 0% { transform: translate3d(var(--dw), 0, 0);} 100% { transform: translate3d(var(--dow), 0, 0); }}.animation { animation: moveTheWave var(--d) linear infinite;}`
+    head[0].append(style)
+
     const width = el.clientWidth
     const {height, num} = option
     const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg')
     svg.setAttribute('height',  `${height}px`)
     svg.setAttribute('width',  '100%')
-    svg.style = `
-        position: absolute;
-        bottom: 0;
-    `
+    svg.style = ` position: absolute; bottom: 0; `
     const dh = 2
     const offsetH = 20
     for (let index = 1; index < num + 1; index++) {
         const offset = parseInt(Math.random(1) * 100)
         const wavesMun = 2 * index
-        const wavesSpeed = parseInt(Math.random() * 50) 
+        const wavesSpeed = parseInt(Math.random() * 30)  + 20
 
         const getWavesPath = (path = [], i = 0) => {
             if (i < wavesMun * 4) {
@@ -42,8 +45,7 @@ const waves = (el, option = {height: 60, num: 4}) => {
                 return path
             }
         }
-        // console.log(getWavesPath(wavesMun))
-        let pathData =  [
+        const pathData =  [
             'M', 0, index * dh + offsetH,
             ...getWavesPath(),
             'L',width * 8, index * dh + offsetH,
@@ -53,7 +55,7 @@ const waves = (el, option = {height: 60, num: 4}) => {
         ].join(' ');
         svg.append(createSvg('path', {
             d: pathData,
-            style: `--d: ${wavesSpeed}s;--dw:${offset}%;fill: rgba(123,22,3, 0.3);`,
+            style: `--d: ${wavesSpeed}s;--dw:${-offset}%;--dow:${-offset - 400}%;fill: rgba(123,22,3, 0.3);`,
             width: '800%',
             height: '100%',
             class: 'animation'
