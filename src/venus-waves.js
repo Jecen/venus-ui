@@ -93,6 +93,7 @@ export default class Waves extends LitElement {
 
   _didRender() {
     const wrapper = this.shadowRoot.getElementById('wrapper')
+   
     const width = wrapper.clientWidth
     const { svgHeight, num, animation } = this
     const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg')
@@ -100,13 +101,13 @@ export default class Waves extends LitElement {
     svg.setAttribute('width',  '100%')
     svg.style = ` position: absolute; bottom: 0; `
     this._clearNode(wrapper);
-
     for (let index = 1; index < num + 1; index++) {
       const {d, style } = this._getPath(index, width, svgHeight)
       const path = this._createSvg('path', { d, style, width: '800%', height: '100%', class: `animation ${animation === 'hover' ? "paused" : ""}` })
       svg.appendChild(path)
     }
     wrapper.appendChild(svg)
+
     if (this.animation === 'hover') {
       this.addEventListener('mouseenter', () => {
         const paths = svg.getElementsByTagName('path')
@@ -123,6 +124,7 @@ export default class Waves extends LitElement {
       })
     }
     this.classList.remove('pending');
+    console.log(this)
   }
 }
 customElements.define('venus-waves', Waves);
