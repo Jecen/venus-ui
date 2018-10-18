@@ -11,7 +11,7 @@
       font-size: 16px;
       line-height: 2;
     }
-    .wrapper{
+    .waves{
       position: relative;
       width: 400px;
       height: 300px;
@@ -31,15 +31,14 @@
   
   </style>
   <script type="module" src="../dist/venus-ui.js"></script>
-  <script type="module" src="../src/waves.js"></script>
 </head>
 
 <body>
-  <div class=wrapper></div>
   <lcd-number value="19" color="#557722" size="140"></lcd-number>
+  <venus-waves class="waves" num="4" color="rgba(51,95,200, 0.3)" svgHeight="60"></venus-waves>
   <script>
     window.onload = function() {
-      waves(document.querySelector('.wrapper'))
+      const waves = document.querySelector('.waves')
     }
   </script>
 </body>

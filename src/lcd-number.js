@@ -30,29 +30,8 @@ export default class LCDNumber extends LitElement {
 
   _render() {
     return html`
-    <style>
-      :host {
-        display: inline-block;
-        position: relative;
-        padding: 5px;
-      }
-    
-      :host(.pending) {
-        opacity: 0;
-      }
-    
-      .wrapper {
-        position: relative;
-        pointer-events: none;
-      }
-    
-      svg {
-        display: block;
-      }
-    </style>
-    <div class="wrapper">
-      <svg id="svg"></svg>
-    </div>
+    <style>:host {display: inline-block;position: relative;padding: 5px;}:host(.pending) {opacity: 0;}.wrapper {position: relative;pointer-events: none;}svg {display: block;}</style>
+    <div class="wrapper"><svg id="svg"></svg></div>
     `;
   }
 

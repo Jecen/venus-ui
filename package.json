@@ -1,6 +1,6 @@
 {
   "name": "venus-ui",
-  "version": "1.0.3",
+  "version": "1.0.6",
   "description": "ui lib",
   "main": "./dist/venus-ui.js",
   "scripts": {

@@ -1,5 +1,6 @@
 import LCDNumber from './src/lcd-number.js'
-import waves from './src/waves'
+import VenusWaves from './src/venus-waves.js'
+// import waves from './src/waves'
 
 const onload = function () {
     // For native Imports, manually fire WebComponentsReady so user code
@@ -29,5 +30,5 @@ if (!webComponentsSupported) {
 
 export default {
     'lcd-number': LCDNumber,
-    waves
+    'venus-waves': VenusWaves
 }
