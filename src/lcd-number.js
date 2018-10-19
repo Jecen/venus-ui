@@ -59,7 +59,6 @@ export default class LCDNumber extends LitElement {
   }
 
   getNumber(svg, index, str, w) {
-    console.log(index, str)
     const offset_Y = this.size * 0.1;
     const offset_X = this.size / 2 * 0.2 + w * index;
     const cell_w = this.size * 0.8 / 2
@@ -132,7 +131,6 @@ export default class LCDNumber extends LitElement {
     const currentFormat = format[str]
     const nodes = []
     currentFormat.forEach((flag, index) => {
-        // console.log(flag, index)
         nodes.push(this.setAttr('path', {
             d: paths[index],
             style: `fill:${flag > 0 ? this.color: this.defaultColor};`

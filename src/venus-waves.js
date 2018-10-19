@@ -109,7 +109,6 @@ export default class Waves extends LitElement {
     wrapper.appendChild(svg)
     if (this.animation === 'animation') {
       const paths = svg.getElementsByTagName('path')
-        console.log(paths)
         for(let i = 0; i< paths.length ; i++) {
           paths[i].classList = 'animation'
         }
@@ -127,7 +126,6 @@ export default class Waves extends LitElement {
     const svg =  wrapper.querySelector('svg')
     if (this.animation === 'animation') {
       const paths = svg.getElementsByTagName('path')
-        console.log(paths)
         for(let i = 0; i< paths.length ; i++) {
           paths[i].classList = 'animation'
         }
@@ -147,7 +145,6 @@ export default class Waves extends LitElement {
     } else {
       this._updateRender()
     }
-    console.log(this)
   }
 }
 customElements.define('venus-waves', Waves);
