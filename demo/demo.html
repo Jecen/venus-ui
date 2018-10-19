@@ -35,6 +35,17 @@
       background-color: #123321;
       color: #fff;
     }
+    #test{
+      display: inline-block;
+      border-radius: 4px;
+      cursor: pointer;
+      border: 1px solid #e4e4e4;
+      padding: 4px 10px;
+      user-select: none;
+    }
+    #test:active{
+      background-color: #f6f7f8;
+    }
   
   </style>
   <script type="module" src="../dist/venus-ui.js"></script>
@@ -53,7 +64,7 @@
     </div>
   </div>
   <div class="wrapper">
-    <div style="z-index: 1;" id="test">paused</div>
+    <div id="test">paused</div>
     <venus-waves class="waves" num="4" color="rgba(51,95,200, 0.3)" svgHeight="60" animation="animation"></venus-waves>
   </div>
   <script>
@@ -62,6 +73,7 @@
       const waves = document.querySelector('.waves')
       test.addEventListener('click', () => {
         waves.setAttribute('animation', waves.getAttribute('animation') === 'animation' ? "none" : "animation")
+        test.innerText = waves.getAttribute('animation') === 'animation' ? "paused" : "play"
       })
       const lcd = document.getElementById('lcd')
       const lcdValue = document.getElementById('lcdValue')
