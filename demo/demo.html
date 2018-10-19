@@ -48,7 +48,7 @@
         <span>数值：</span><input id='lcdValue' value="19" type="number">
       </p>
       <p>
-        <span>字体大小：</span><input id='lcdValue' value="140" type="number">
+        <span>字体大小：</span><input id='lcdSize' value="140" type="number">
       </p>
     </div>
   </div>
@@ -65,8 +65,12 @@
       })
       const lcd = document.getElementById('lcd')
       const lcdValue = document.getElementById('lcdValue')
+      const lcdSize  = document.getElementById('lcdSize')
       lcdValue.addEventListener('input', (e) => {
         lcd.setAttribute('value', e.target.value)
+      })
+      lcdSize.addEventListener('input', (e) => {
+        lcd.setAttribute('size', e.target.value)
       })
     }
   </script>

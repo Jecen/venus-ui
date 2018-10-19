@@ -30,7 +30,7 @@ export default class LCDNumber extends LitElement {
 
   _render() {
     return html`
-    <style>:host {display: inline-block;position: relative;padding: 5px;}:host(.pending) {opacity: 0;}.wrapper {position: relative;pointer-events: none;}svg {display: block;}</style>
+    <style>:host {display: inline-block;position: relative;padding: 5px;}:host(.pending) {opacity: 0;}.wrapper {position: relative;pointer-events: none;}svg {display: block;}.path{transition: fill .3s ease;}</style>
     <div class="wrapper"><svg id="svg"></svg></div>
     `;
   }
@@ -133,7 +133,8 @@ export default class LCDNumber extends LitElement {
     currentFormat.forEach((flag, index) => {
         nodes.push(this.setAttr('path', {
             d: paths[index],
-            style: `fill:${flag > 0 ? this.color: this.defaultColor};`
+            style: `fill:${flag > 0 ? this.color: this.defaultColor};`,
+            class: 'path'
         }))
     })
 
