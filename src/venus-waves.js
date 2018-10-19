@@ -17,7 +17,7 @@ export default class Waves extends LitElement {
     this.num = 4;
     this.color = 'rgba(123,22,3, 0.3)';
     this.svgHeight = 100;
-    this.animation = 'infinite';
+    this.animation = 'none';
   }
 
   _createRoot() {
@@ -28,7 +28,7 @@ export default class Waves extends LitElement {
 
   _render() {
     return html`
-    <style>:host {display: block;position:relative;}:host(.pending){opacity:0;}.wrapper{position:relative;width:100%;height:100%;display:block;overflow:hidden;pointer-events:none;}svg{display:block;}@keyframes moveTheWave {0% {transform:translate3d(var(--dw), 0, 0);}100% {transform:translate3d(var(--dow), 0, 0); }}.animation {animation: moveTheWave var(--d) linear infinite;}.paused {animation-play-state: paused;}</style>
+    <style>:host {display: block;position:relative; z-index: -1;}:host(.pending){opacity:0;}.wrapper{position:relative;width:100%;height:100%;display:block;overflow:hidden;pointer-events:none;}svg{display:block;}@keyframes moveTheWave {0% {transform:translate3d(var(--dw), 0, 0);}100% {transform:translate3d(var(--dow), 0, 0); }}.animation {animation: moveTheWave var(--d) linear infinite;}.paused {animation-play-state: paused;}</style>
     <div class="wrapper" id="wrapper"></div>
     `;
   }
@@ -89,9 +89,9 @@ export default class Waves extends LitElement {
         }
     }  
    return el
-}
+  }
 
-  _didRender() {
+  _initRender() {
     const wrapper = this.shadowRoot.getElementById('wrapper')
    
     const width = wrapper.clientWidth
@@ -107,23 +107,46 @@ export default class Waves extends LitElement {
       svg.appendChild(path)
     }
     wrapper.appendChild(svg)
-
-    if (this.animation === 'hover') {
-      this.addEventListener('mouseenter', () => {
-        const paths = svg.getElementsByTagName('path')
+    if (this.animation === 'animation') {
+      const paths = svg.getElementsByTagName('path')
         console.log(paths)
         for(let i = 0; i< paths.length ; i++) {
           paths[i].classList = 'animation'
         }
-      })
-      this.addEventListener('mouseout', () => {
-        const paths = svg.getElementsByTagName('path')
-        for(let i = 0; i< paths.length ; i++) {
-          paths[i].classList = 'animation paused'
-        }
-      })
+    } else {
+      const paths = svg.getElementsByTagName('path')
+      for(let i = 0; i< paths.length ; i++) {
+        paths[i].classList = 'animation paused'
+      }
     }
     this.classList.remove('pending');
+  }
+
+  _updateRender() {
+    const wrapper = this.shadowRoot.getElementById('wrapper')
+    const svg =  wrapper.querySelector('svg')
+    if (this.animation === 'animation') {
+      const paths = svg.getElementsByTagName('path')
+        console.log(paths)
+        for(let i = 0; i< paths.length ; i++) {
+          paths[i].classList = 'animation'
+        }
+    } else {
+      const paths = svg.getElementsByTagName('path')
+      for(let i = 0; i< paths.length ; i++) {
+        paths[i].classList = 'animation paused'
+      }
+    }
+  }
+
+  _didRender() {
+    const wrapper = this.shadowRoot.getElementById('wrapper')
+    const svg =  wrapper.querySelector('svg')
+    if (!svg) {
+      this._initRender()
+    } else {
+      this._updateRender()
+    }
     console.log(this)
   }
 }

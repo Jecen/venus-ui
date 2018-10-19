@@ -16,7 +16,6 @@
       width: 400px;
       height: 120px;
       display: block;
-      background-color: #fff;
       border-radius: 5px;
       border: 1px solid #123123;
       overflow: hidden;
@@ -28,6 +27,7 @@
       height: 100%;
       bottom: 0;
       left: 0;
+      z-index: -1;
     }
     /* @keyframes moveTheWave {
       0% { transform: translate3d(var(--dw), 0, 0);}
@@ -50,12 +50,16 @@
 <body>
   <lcd-number value="19" color="#557722" size="140"></lcd-number>
   <div class="wrapper">
-      aa  asdasd asdas
-    <venus-waves class="waves" num="4" color="rgba(51,95,200, 0.3)" svgHeight="60" animation="hover"></venus-waves>
+    <div style="z-index: 1;" id="test">paused</div>
+    <venus-waves class="waves" num="4" color="rgba(51,95,200, 0.3)" svgHeight="60" animation="animation"></venus-waves>
   </div>
   <script>
     window.onload = function() {
+      const test = document.getElementById('test')
       const waves = document.querySelector('.waves')
+      test.addEventListener('click', () => {
+        waves.setAttribute('animation', waves.getAttribute('animation') === 'animation' ? "none" : "animation")
+      })
     }
   </script>
 </body>
